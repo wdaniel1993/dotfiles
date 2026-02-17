@@ -60,14 +60,14 @@ config.cursor_blink_ease_out = "Constant"
 local home = os.getenv("HOME") or os.getenv("USERPROFILE")
 local dotfiles_dir = home .. "/dotfiles"
 
--- config.background = {
--- 	{
--- 		source = { File = dotfiles_dir .. "/bg.png" },
--- 		hsb = { brightness = 0.03 },
--- 		width = "100%",
--- 		height = "100%",
--- 	},
--- }
+config.background = {
+	{
+		source = { File = dotfiles_dir .. "/bg.png" },
+		hsb = { brightness = 0.03 },
+		width = "100%",
+		height = "100%",
+	},
+}
 
 -- ============================================================================
 -- SHELL / DEFAULT PROGRAM
