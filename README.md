@@ -2,7 +2,7 @@
 
 Cross-platform terminal configuration for **WezTerm + Zsh + tmux**.
 
-Works on Windows (via WSL) and Ubuntu with consistent keybindings and Catppuccin Mocha theming.
+Works on Windows (PowerShell + WSL) and Ubuntu with consistent keybindings and Catppuccin Mocha theming.
 
 ## What's Included
 

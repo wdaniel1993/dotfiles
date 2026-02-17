@@ -1,5 +1,5 @@
 -- WezTerm Configuration
--- Cross-platform setup: Windows (WSL + PowerShell) & Ubuntu
+-- Cross-platform setup: Windows (PowerShell + WSL) & Ubuntu
 -- https://wezfurlong.org/wezterm/config/files.html
 
 local wezterm = require("wezterm")
@@ -75,12 +75,8 @@ config.background = {
 
 -- Platform-specific default shell
 if wezterm.target_triple == "x86_64-pc-windows-msvc" then
-	-- Windows: default to WSL (Zsh)
-	-- Falls back to PowerShell if WSL isn't available
-	config.default_domain = "WSL:Ubuntu"
-
-	-- Alternatively, to launch PowerShell directly, uncomment:
-	-- config.default_prog = { "pwsh.exe", "-NoLogo" }
+	-- Windows: default to PowerShell
+	config.default_prog = { "pwsh.exe", "-NoLogo" }
 else
 	-- Linux: use Zsh
 	config.default_prog = { "/usr/bin/zsh" }
@@ -189,6 +185,19 @@ config.front_end = "WebGpu"
 config.webgpu_power_preference = "HighPerformance"
 config.max_fps = 120
 config.animation_fps = 60
+
+-- ============================================================================
+-- WSL DOMAINS (Windows only — for WSL integration)
+-- ============================================================================
+if wezterm.target_triple == "x86_64-pc-windows-msvc" then
+	config.wsl_domains = {
+		{
+			name = "WSL:Ubuntu",
+			distribution = "Ubuntu",
+			default_cwd = "~",
+		},
+	}
+end
 
 -- ============================================================================
 -- SSH DOMAINS (optional — for direct SSH tabs)
