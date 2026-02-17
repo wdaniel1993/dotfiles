@@ -1,0 +1,53 @@
+# Starship Prompt Configuration
+# Docs: https://starship.rs/config/
+
+# General
+format = """
+$directory\
+$git_branch\
+$git_status\
+$python\
+$nodejs\
+$dotnet\
+$docker_context\
+$kubernetes\
+$cmd_duration\
+$line_break\
+$character"""
+
+# Prompt character
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+
+[directory]
+truncation_length = 4
+truncate_to_repo = true
+style = "bold lavender"
+
+[git_branch]
+symbol = " "
+style = "bold mauve"
+
+[git_status]
+style = "bold red"
+
+[cmd_duration]
+min_time = 2000
+format = "took [$duration](bold yellow) "
+
+[python]
+symbol = " "
+
+[nodejs]
+symbol = " "
+
+[dotnet]
+symbol = "󰪮 "
+
+[docker_context]
+symbol = " "
+
+[kubernetes]
+disabled = false
+symbol = "☸ "
