@@ -12,9 +12,10 @@ Works on Windows (via WSL) and Ubuntu with consistent keybindings and Catppuccin
 | `.zshrc` | Zsh config with Zinit plugins (syntax highlighting, autosuggestions) |
 | `starship.toml` | Starship prompt config |
 | `tmux.conf` | tmux config (Ctrl+A prefix, matches WezTerm patterns) |
+| `.wslconfig` | WSL configuration for Ubuntu (Windows only) |
 | `setup-zsh.sh` | One-time Zsh/Zinit/Starship installer for Ubuntu |
 | `install.sh` | Linux/WSL: creates symlinks + WezTerm loader |
-| `install.ps1` | Windows: creates WezTerm loader |
+| `install.ps1` | Windows: creates WezTerm loader + copies .wslconfig |
 
 ## Quick Start
 
@@ -42,8 +43,11 @@ chmod +x install.sh && ./install.sh
 git clone git@github.com:youruser/dotfiles.git $env:USERPROFILE\dotfiles
 cd $env:USERPROFILE\dotfiles
 
-# Create WezTerm loader
+# Create WezTerm loader and copy .wslconfig
 .\install.ps1
+
+# Restart WSL to apply .wslconfig settings
+wsl --shutdown
 
 # Then open WSL and run install.sh for Zsh/tmux
 ```
@@ -62,7 +66,17 @@ See `keybinding-reference.md` for the full reference, or print `keybinding-cheat
 
 ## Background Image (Optional)
 
-Drop a `bg.png` into this repo and uncomment the background section in `wezterm.lua`. Keep images under 2-3MB.
+Drop a `bg.png` into this repo and uncomment the background section in `wezterm.lua`. Keep images under 2-3MB. The background image will maintain its aspect ratio using the "Cover" mode.
+
+## WSL Configuration (Windows Only)
+
+The `.wslconfig` file is automatically copied to your Windows user profile when running `install.ps1`. This file configures:
+- Memory allocation (4GB default)
+- CPU allocation (2 processors default)
+- Swap size (2GB default)
+- Experimental features for better performance
+
+Adjust these settings based on your system resources. After modifying, restart WSL with `wsl --shutdown`.
 
 ## License
 

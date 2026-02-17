@@ -64,8 +64,8 @@ config.background = {
 	{
 		source = { File = dotfiles_dir .. "/bg.png" },
 		hsb = { brightness = 0.03 },
-		width = "100%",
-		height = "100%",
+		width = "Cover",
+		height = "Cover",
 	},
 }
 

@@ -1,0 +1,31 @@
+# WSL Configuration for Ubuntu
+# Place this file in your Windows user home directory: %USERPROFILE%\.wslconfig
+# (e.g., C:\Users\YourName\.wslconfig)
+# After creating/modifying, restart WSL with: wsl --shutdown
+
+[wsl2]
+# Memory allocation (adjust based on your system)
+memory=4GB
+
+# CPU allocation (number of virtual processors)
+processors=2
+
+# Swap size
+swap=2GB
+
+# Enable/disable page reporting (helps with memory management)
+pageReporting=true
+
+# Kernel command line arguments
+kernelCommandLine=
+
+# Enable/disable nested virtualization
+nestedVirtualization=true
+
+# Disable GUI applications if not needed (reduces overhead)
+# guiApplications=false
+
+[experimental]
+# Enable experimental features
+autoMemoryReclaim=gradual
+sparseVhd=true
