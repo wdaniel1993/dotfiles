@@ -36,7 +36,7 @@ config.window_padding = {
 
 -- Tab bar
 config.use_fancy_tab_bar = true
-config.hide_tab_bar_if_only_one_tab = true
+config.hide_tab_bar_if_only_one_tab = false
 config.tab_bar_at_bottom = false
 config.show_new_tab_button_in_tab_bar = false
 
@@ -171,11 +171,10 @@ else
 end
 
 -- Add SSH quick-connect to your headless Ubuntu server
--- Uncomment and adjust the hostname:
--- table.insert(config.launch_menu, {
--- 	label = "🖥 SSH: Ubuntu Server",
--- 	args = { "ssh", "daniel@your-server-hostname" },
--- })
+table.insert(config.launch_menu, {
+	label = "🖥 SSH: Ubuntu Server",
+	args = { "ssh", "daniel@192.168.0.187" },
+})
 
 -- ============================================================================
 -- SCROLLBACK & PERFORMANCE
@@ -194,14 +193,12 @@ config.animation_fps = 60
 -- ============================================================================
 -- SSH DOMAINS (optional — for direct SSH tabs)
 -- ============================================================================
--- Uncomment and configure for your headless Ubuntu:
---
--- config.ssh_domains = {
--- 	{
--- 		name = "ubuntu-server",
--- 		remote_address = "your-server-ip:22",
--- 		username = "daniel",
--- 	},
--- }
+config.ssh_domains = {
+	{
+		name = "ubuntu-server",
+		remote_address = "192.168.0.187:22",
+		username = "daniel",
+	},
+}
 
 return config
