@@ -51,3 +51,4 @@ symbol = " "
 [kubernetes]
 disabled = false
 symbol = "☸ "
+
