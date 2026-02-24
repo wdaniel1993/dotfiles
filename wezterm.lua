@@ -77,6 +77,9 @@ config.background = {
 if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 	-- Windows: default to PowerShell
 	config.default_prog = { "pwsh.exe", "-NoLogo" }
+elseif wezterm.target_triple:find("apple") then
+	-- macOS: use Zsh (built-in since Catalina)
+	config.default_prog = { "/bin/zsh" }
 else
 	-- Linux: use Zsh
 	config.default_prog = { "/usr/bin/zsh" }
@@ -161,6 +164,9 @@ if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 	table.insert(config.launch_menu, { label = " WSL: Zsh", args = { "wsl.exe", "--distribution", "Ubuntu", "--exec", "/usr/bin/zsh" } })
 	table.insert(config.launch_menu, { label = " PowerShell", args = { "pwsh.exe", "-NoLogo" } })
 	table.insert(config.launch_menu, { label = " CMD", args = { "cmd.exe" } })
+elseif wezterm.target_triple:find("apple") then
+	table.insert(config.launch_menu, { label = " Zsh", args = { "/bin/zsh" } })
+	table.insert(config.launch_menu, { label = " Bash", args = { "/bin/bash" } })
 else
 	table.insert(config.launch_menu, { label = " Zsh", args = { "/usr/bin/zsh" } })
 	table.insert(config.launch_menu, { label = " Bash", args = { "/usr/bin/bash" } })

@@ -1,20 +1,33 @@
 #!/bin/bash
 # ============================================================================
-# Zsh Setup Script for Ubuntu (native & WSL)
-# Run this on your Ubuntu machine AND inside WSL on Windows
+# Zsh Setup Script for Ubuntu (native & WSL) and macOS
+# Run this on your machine to install Zsh, Zinit, and Starship.
 # ============================================================================
 
 set -e
 
 echo "🚀 Setting up Zsh environment..."
 
+# --- Detect OS ---
+OS="$(uname -s)"
+
 # --- Install Zsh ---
 echo "📦 Installing Zsh..."
-sudo apt update && sudo apt install -y zsh git curl
+if [ "$OS" = "Darwin" ]; then
+    # macOS: use Homebrew (install brew if missing)
+    if ! command -v brew &>/dev/null; then
+        echo "🍺 Installing Homebrew..."
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    fi
+    brew install zsh git curl
+else
+    # Linux (Ubuntu / WSL)
+    sudo apt update && sudo apt install -y zsh git curl
+fi
 
 # --- Set Zsh as default shell ---
 echo "🐚 Setting Zsh as default shell..."
-chsh -s $(which zsh)
+chsh -s "$(which zsh)"
 
 # --- Install Zinit (lightweight plugin manager) ---
 echo "📦 Installing Zinit plugin manager..."
@@ -77,8 +90,15 @@ bindkey '^[[1;5D' backward-word          # Ctrl+Left: backward word
 bindkey '^[[3~' delete-char              # Delete key
 
 # --- Aliases ---
-alias ll='ls -lah --color=auto'
-alias la='ls -A --color=auto'
+if ls --color=auto &>/dev/null; then
+    # GNU ls (Linux)
+    alias ll='ls -lah --color=auto'
+    alias la='ls -A --color=auto'
+else
+    # BSD ls (macOS)
+    alias ll='ls -lahG'
+    alias la='ls -AG'
+fi
 alias ..='cd ..'
 alias ...='cd ../..'
 alias gs='git status'

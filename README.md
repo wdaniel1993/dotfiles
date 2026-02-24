@@ -2,7 +2,7 @@
 
 Cross-platform terminal configuration for **WezTerm + Zsh + tmux**.
 
-Works on Windows (PowerShell + WSL) and Ubuntu with consistent keybindings and Catppuccin Mocha theming.
+Works on Windows (PowerShell + WSL), Ubuntu, and macOS with consistent keybindings and Catppuccin Mocha theming.
 
 ## What's Included
 
@@ -31,6 +31,19 @@ git clone git@github.com:youruser/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 
 # First time only: install Zsh, Zinit, Starship
+chmod +x setup-zsh.sh && ./setup-zsh.sh
+
+# Create symlinks + WezTerm loader
+chmod +x install.sh && ./install.sh
+```
+
+### macOS
+
+```bash
+git clone git@github.com:youruser/dotfiles.git ~/dotfiles
+cd ~/dotfiles
+
+# First time only: install Homebrew (if not present), Zsh, Zinit, Starship
 chmod +x setup-zsh.sh && ./setup-zsh.sh
 
 # Create symlinks + WezTerm loader
