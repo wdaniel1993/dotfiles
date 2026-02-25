@@ -39,7 +39,11 @@ fi
 
 # --- Install Starship prompt ---
 echo "🌟 Installing Starship prompt..."
-curl -sS https://starship.rs/install.sh | sh -s -- -y
+if [ "$OS" = "Darwin" ]; then
+    brew install starship
+else
+    curl -sS https://starship.rs/install.sh | sh -s -- -y
+fi
 
 # --- Create .zshrc ---
 echo "📝 Writing .zshrc..."
