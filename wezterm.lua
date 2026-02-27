@@ -15,7 +15,12 @@ config.color_scheme = "Catppuccin Mocha"
 
 -- Font: JetBrains Mono Nerd Font
 -- Install from: https://www.nerdfonts.com/font-downloads
-config.font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Regular" })
+-- Uses font_with_fallback to handle naming differences across distros (e.g. CachyOS/Arch)
+config.font = wezterm.font_with_fallback({
+	{ family = "JetBrainsMono Nerd Font", weight = "Regular" },
+	{ family = "JetBrains Mono", weight = "Regular" },
+	"monospace",
+})
 config.font_size = 12.0
 
 -- Font rendering
@@ -41,7 +46,11 @@ config.tab_bar_at_bottom = false
 config.show_new_tab_button_in_tab_bar = false
 
 config.window_frame = {
-	font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Bold" }),
+	font = wezterm.font_with_fallback({
+		{ family = "JetBrainsMono Nerd Font", weight = "Bold" },
+		{ family = "JetBrains Mono", weight = "Bold" },
+		"monospace",
+	}),
 	font_size = 10.0,
 }
 
