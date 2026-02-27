@@ -15,7 +15,7 @@ config.color_scheme = "Catppuccin Mocha"
 
 -- Font: JetBrains Mono Nerd Font
 -- Install from: https://www.nerdfonts.com/font-downloads
-config.font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Medium" })
+config.font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Regular" })
 config.font_size = 12.0
 
 -- Font rendering
@@ -187,8 +187,13 @@ config.enable_scroll_bar = false
 config.audible_bell = "Disabled"
 
 -- GPU settings
-config.front_end = "WebGpu"
-config.webgpu_power_preference = "HighPerformance"
+-- Use OpenGL on Linux to avoid Vulkan/wgpu crashes (e.g. on CachyOS)
+if wezterm.target_triple:find("linux") then
+	config.front_end = "OpenGL"
+else
+	config.front_end = "WebGpu"
+	config.webgpu_power_preference = "HighPerformance"
+end
 config.max_fps = 120
 config.animation_fps = 60
 
