@@ -1,6 +1,6 @@
 #!/bin/bash
 # ============================================================================
-# Zsh Setup Script for Ubuntu (native & WSL) and macOS
+# Zsh Setup Script for Ubuntu (native & WSL), CachyOS/Arch, and macOS
 # Run this on your machine to install Zsh, Zinit, and Starship.
 # ============================================================================
 
@@ -20,8 +20,11 @@ if [ "$OS" = "Darwin" ]; then
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     fi
     brew install zsh git curl
+elif command -v pacman &>/dev/null; then
+    # Arch-based Linux (CachyOS, Arch, Manjaro, etc.)
+    sudo pacman -S --noconfirm zsh git curl
 else
-    # Linux (Ubuntu / WSL)
+    # Debian/Ubuntu / WSL
     sudo apt update && sudo apt install -y zsh git curl
 fi
 
@@ -41,6 +44,9 @@ fi
 echo "🌟 Installing Starship prompt..."
 if [ "$OS" = "Darwin" ]; then
     brew install starship
+elif command -v pacman &>/dev/null; then
+    # Arch-based Linux (CachyOS, Arch, Manjaro, etc.)
+    sudo pacman -S --noconfirm starship
 else
     curl -sS https://starship.rs/install.sh | sh -s -- -y
 fi

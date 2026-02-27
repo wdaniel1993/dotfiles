@@ -2,7 +2,7 @@
 
 Cross-platform terminal configuration for **WezTerm + Zsh + tmux**.
 
-Works on Windows (PowerShell + WSL), Ubuntu, and macOS with consistent keybindings and Catppuccin Mocha theming.
+Works on Windows (PowerShell + WSL), Ubuntu, CachyOS/Arch, and macOS with consistent keybindings and Catppuccin Mocha theming.
 
 ## What's Included
 
@@ -13,7 +13,7 @@ Works on Windows (PowerShell + WSL), Ubuntu, and macOS with consistent keybindin
 | `starship.toml` | Starship prompt config |
 | `tmux.conf` | tmux config (Ctrl+A prefix, matches WezTerm patterns) |
 | `.wslconfig` | WSL configuration for Ubuntu (Windows only) |
-| `setup-zsh.sh` | One-time Zsh/Zinit/Starship installer for Ubuntu |
+| `setup-zsh.sh` | One-time Zsh/Zinit/Starship installer for Ubuntu, CachyOS/Arch |
 | `install.sh` | Linux/WSL: creates symlinks + WezTerm loader |
 | `install.ps1` | Windows: creates WezTerm loader + copies .wslconfig |
 
@@ -24,7 +24,7 @@ Works on Windows (PowerShell + WSL), Ubuntu, and macOS with consistent keybindin
 - **Font:** [JetBrains Mono Nerd Font](https://www.nerdfonts.com/font-downloads)
 - **WezTerm:** [wezfurlong.org/wezterm](https://wezfurlong.org/wezterm/install/)
 
-### Linux / WSL
+### Linux / WSL / CachyOS
 
 ```bash
 git clone git@github.com:youruser/dotfiles.git ~/dotfiles
